@@ -27,7 +27,7 @@ Applications are to be started using:
 java -javaagent:tamestaj.jar ...
 ```
 
-The agent will automatically detect `@Stage` annotations on methods and fields and transforms code that refers (i.e. uses, calls, reads, or accesses) to them. Reified terms are automatically plumbed to their respective `Language` classes' `make...Closure(...)` methods when *materialization* is triggered by language boundaries, i.e. when terms are consumed externally.
+The agent will automatically detect `@Stage` annotations on methods and fields and transforms code that refers (i.e. uses, calls, reads, or accesses) to them. Reified terms are automatically plumbed to their respective `Language` classes' `make...Closure(...)` methods when *materialization* is triggered by language boundaries, i.e. when terms are consumed DSL-externally.
 
 
 Reference

@@ -146,7 +146,7 @@ final class Agent {
 
                                 TickTock.tockPrint();
 
-                                TickTock.tick("Pre-lift analysis");
+                                TickTock.tick("Lift estimate analysis");
 
                                     LiftEstimateAnalyzer.Result liftEstimateAnalyzerResult = LiftEstimateAnalyzer.analyze(stageGraph, valueFlowAnalyzer.getResult(), constantAnalyzer.getResult());
 

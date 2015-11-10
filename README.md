@@ -9,6 +9,7 @@ Dependencies
 ---
 
 * Javassist 3 (3.20.0-GA)
+* Guava 18.0
 * JDK 8
 
 

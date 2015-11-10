@@ -33,4 +33,4 @@ The agent will automatically detect `@Stage` annotations on methods and fields a
 Reference
 ---
 
-Maximilian Scherr and Shigeru Chiba. [Almost First-Class Language Embedding: Taming Staged Embedded DSLs](http://dl.acm.org/citation.cfm?id=2814217). In *Proceedings of the 2015 ACM SIGPLAN International Conference on Generative Programming: Concepts and Experiences*, pages 21-30, GPCE 2015, New York, NY, USA, 2015. ACM.
+Maximilian Scherr and Shigeru Chiba. [Almost First-Class Language Embedding: Taming Staged Embedded DSLs](http://dl.acm.org/citation.cfm?id=2814217). In *Proceedings of the 2015 ACM SIGPLAN International Conference on Generative Programming: Concepts and Experiences*, pages 21-30, New York, NY, USA, 2015. ACM.

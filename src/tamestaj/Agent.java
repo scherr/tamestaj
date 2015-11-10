@@ -21,11 +21,15 @@ final class Agent {
     private Agent() { }
 
     public static void premain(String agentArgs, Instrumentation inst) {
+        /*
+         * Debug dump paths...
+         * TODO: Make option in agentArgs!
         if (System.getProperty("os.name").toLowerCase().contains("nux")) {
-            CtClass.debugDump = "/home/max/Desktop/";
+            CtClass.debugDump = ;
         } else {
-            CtClass.debugDump = "/Users/Max/Desktop/";
+            CtClass.debugDump = ;
         }
+        */
 
         // Making the various hidden classes accessible here has caused a weird JVM bug once (critical crash)!
         // We moved it inside Transformer.

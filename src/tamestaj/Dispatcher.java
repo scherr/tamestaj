@@ -51,9 +51,7 @@ final class Dispatcher {
     public static double materializeAsDouble(Expression expression) { return expression.materializeAsDouble(); }
     public static byte materializeAsByte(Expression expression) { return expression.materializeAsByte(); }
     public static char materializeAsCharacter(Expression expression) { return expression.materializeAsCharacter(); }
-    public static short materializeAsShort(Expression expression) {
-        return expression.materializeAsShort();
-    }
+    public static short materializeAsShort(Expression expression) { return expression.materializeAsShort(); }
 
     public static Expression convertToBoolean(Expression expression) { return expression.convertToBoolean(); }
     public static Expression convertToInteger(Expression expression) { return expression.convertToInteger(); }

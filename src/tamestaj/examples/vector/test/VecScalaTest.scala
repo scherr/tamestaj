@@ -3,7 +3,7 @@ package tamestaj.examples.vector.test
 import java.util
 import java.util.Random
 
-import tamestaj.examples.vector.{VecScala, Vec}
+import tamestaj.examples.vector.{Vec}
 import tamestaj.util.TickTock
 
 object VecScalaTest {

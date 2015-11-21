@@ -284,7 +284,7 @@ final class WeaveAnalyzer extends HighLevelAnalyzerWithBoxingUnboxing<WeaveAnaly
         int next;
         if (codeIterator.hasNext()) {
             codeIterator.next();
-            next = codeIterator.lookAhead();
+            next = codeIterator.lookAhead() + (codeIterator.byteAt(position) == WIDE ? 1 : 0);
         } else {
             next = codeIterator.getCodeLength();
         }
@@ -301,7 +301,7 @@ final class WeaveAnalyzer extends HighLevelAnalyzerWithBoxingUnboxing<WeaveAnaly
         int next;
         if (codeIterator.hasNext()) {
             codeIterator.next();
-            next = codeIterator.lookAhead();
+            next = codeIterator.lookAhead() + (codeIterator.byteAt(position) == WIDE ? 1 : 0);
         } else {
             next = codeIterator.getCodeLength();
         }
@@ -317,7 +317,7 @@ final class WeaveAnalyzer extends HighLevelAnalyzerWithBoxingUnboxing<WeaveAnaly
             codeIterator.next();
             next = codeIterator.lookAhead();
         } else {
-            next = codeIterator.getCodeLength();
+            next = codeIterator.getCodeLength() + (codeIterator.byteAt(position) == WIDE ? 1 : 0);
         }
         codeIterator.move(position);
 

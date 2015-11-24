@@ -19,7 +19,6 @@ import java.util.ArrayList;
  * Copyright (C) 1999- Shigeru Chiba. All Rights Reserved.
  */
 
-@SuppressWarnings("unused")
 abstract class HighLevelAnalyzer<L, S, F extends Frame<L, S>> extends LowLevelAnalyzer<F> {
     protected enum ArithmeticOperation {
         ADDITION,
@@ -1650,7 +1649,6 @@ abstract class HighLevelAnalyzer<L, S, F extends Frame<L, S>> extends LowLevelAn
         switch (kind) {
             case ConstPool.REF_getField:
             case ConstPool.REF_getStatic: {
-                String desc = constPool.getFieldrefType(index);
                 Type targetType = resolveClassInfo(constPool.getFieldrefClassName(index), at);
                 String fieldName = constPool.getFieldrefName(index);
                 CtField field;
@@ -1665,7 +1663,6 @@ abstract class HighLevelAnalyzer<L, S, F extends Frame<L, S>> extends LowLevelAn
             }
             case ConstPool.REF_putField:
             case ConstPool.REF_putStatic: {
-                String desc = constPool.getFieldrefType(index);
                 Type targetType = resolveClassInfo(constPool.getFieldrefClassName(index), at);
                 String fieldName = constPool.getFieldrefName(index);
                 CtField field;
@@ -1698,7 +1695,6 @@ abstract class HighLevelAnalyzer<L, S, F extends Frame<L, S>> extends LowLevelAn
                 String desc = constPool.getMethodrefType(index);
                 Type targetType = resolveClassInfo(constPool.getMethodrefClassName(index), at);
 
-                String methodName = constPool.getMethodrefName(index);
                 CtConstructor constructor;
                 try {
                     constructor = targetType.getCtClass().getConstructor(desc);

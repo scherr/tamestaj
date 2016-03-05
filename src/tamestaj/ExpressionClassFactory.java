@@ -74,13 +74,6 @@ final class ExpressionClassFactory {
         return "." + Util.getConversionMethodName(type) + "()";
     }
 
-    // Note: In the strict case we could immediately materialize and return the result, but currently we are also providing
-    //       closure holders and static info through a separate set operation, which requires there to be an expression
-    //       as is or carried by a carrier.
-    //
-    //       It would be better to hand this extra info into the factory method and constructor!
-    //       Why not in argument list? Because of the parameter limit?! However, this is an edge case, so...
-    //       TODO: Consider somehow integrating this into the constructor / factory method and handle the edge case somehow. Maybe needs several factory methods.
     private static CtClass makeExpressionClass(Source.Staged staged, String superClassName, String memberClassName) {
         // Here we make the language class accessible!
         if (!Modifier.isPublic(staged.getLanguage().getModifiers())) {

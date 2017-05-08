@@ -25,7 +25,7 @@ final class TraceCache<T extends Closure<?>> {
     }
 
     ClosureHolder<T> getCachedClosureHolder(Trace trace) {
-        // Caching logical contained in proxy!
+        // Caching logic contained in proxy!
         return ClosureHolder.makeTraceCacheProxy(trace, internalMap.get());
     }
 }

@@ -6,7 +6,6 @@ package tamestaj;
 // public at run time.
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 abstract class ClosureHolder<T extends Closure<?>> {
     private ClosureHolder() { }
@@ -16,16 +15,16 @@ abstract class ClosureHolder<T extends Closure<?>> {
             private T closure;
             private int environmentSize;
 
-            void set(T closure, int environmentSize) {
+            synchronized void set(T closure, int environmentSize) {
                 this.closure = closure;
                 this.environmentSize = environmentSize;
             }
 
-            T getClosure() {
+            synchronized T getClosure() {
                 return closure;
             }
 
-            int getEnvironmentSize() {
+            synchronized int getEnvironmentSize() {
                 return environmentSize;
             }
 

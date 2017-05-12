@@ -258,6 +258,7 @@ final class ExpressionClassFactory {
                     );
                 }
             }
+
             String construction;
             if (!staged.getStaticInfoElements().isEmpty()) {
                 construction = "new " + clazz.getName() + "(arguments, staticInfo, closureHolder)";
@@ -390,24 +391,26 @@ final class ExpressionClassFactory {
                         + "            environment = new " + Util.ENVIRONMENT_CLASS.getName() + "($0, cachedClosureHolder.getEnvironmentSize());\n"
                         + "        }\n"
                         + "    } else {\n"
-                        + "        closure = (" + closureInterface.getName() + ") $0.closureHolder.getClosure();\n"
-                        + "        if (closure == null) {\n"
-                        + "            " + Util.CLOSURE_HOLDER_CLASS.getName() + " cachedClosureHolder = " + GlobalCache.class.getName() + ".getCachedClosureHolder($0);\n"
-                        + "            if (cachedClosureHolder == null) {\n"
-                        + "                " + Util.BINDER_CLASS.getName() + " binder = new " + Util.BINDER_CLASS.getName() + "($0);\n"
-                        + "                closure = " + staged.getLanguage().getName() + ".make" + closureInterface.getSimpleName() + "($0, binder, $0.closureHolder.isPermanent());\n"
-                        + "                environment = new " + Util.ENVIRONMENT_CLASS.getName() + "($0, binder.getBoundCount());\n"
-                        + "                if (!binder.inspectionOccurred()) {\n"
-                        + "                    $0.closureHolder.set(closure, binder.getBoundCount());\n"
-                        + "                    " + GlobalCache.class.getName() + ".cache($0, closure, binder.getBoundCount());\n"
+                        + "        synchronized ($0.closureHolder) {"
+                        + "            closure = (" + closureInterface.getName() + ") $0.closureHolder.getClosure();\n"
+                        + "            if (closure == null) {\n"
+                        + "                " + Util.CLOSURE_HOLDER_CLASS.getName() + " cachedClosureHolder = " + GlobalCache.class.getName() + ".getCachedClosureHolder($0);\n"
+                        + "                if (cachedClosureHolder == null) {\n"
+                        + "                    " + Util.BINDER_CLASS.getName() + " binder = new " + Util.BINDER_CLASS.getName() + "($0);\n"
+                        + "                    closure = " + staged.getLanguage().getName() + ".make" + closureInterface.getSimpleName() + "($0, binder, $0.closureHolder.isPermanent());\n"
+                        + "                    environment = new " + Util.ENVIRONMENT_CLASS.getName() + "($0, binder.getBoundCount());\n"
+                        + "                    if (!binder.inspectionOccurred()) {\n"
+                        + "                        $0.closureHolder.set(closure, binder.getBoundCount());\n"
+                        + "                        " + GlobalCache.class.getName() + ".cache($0, closure, binder.getBoundCount());\n"
+                        + "                    }\n"
+                        + "                } else {\n"
+                        + "                    closure = (" + closureInterface.getName() + ") cachedClosureHolder.getClosure();\n"
+                        + "                    environment = new " + Util.ENVIRONMENT_CLASS.getName() + "($0, cachedClosureHolder.getEnvironmentSize());\n"
+                        + "                    $0.closureHolder.set(closure, cachedClosureHolder.getEnvironmentSize());\n"
                         + "                }\n"
                         + "            } else {\n"
-                        + "                closure = (" + closureInterface.getName() + ") cachedClosureHolder.getClosure();\n"
-                        + "                environment = new " + Util.ENVIRONMENT_CLASS.getName() + "($0, cachedClosureHolder.getEnvironmentSize());\n"
-                        + "                $0.closureHolder.set(closure, cachedClosureHolder.getEnvironmentSize());\n"
-                        + "            }\n"
-                        + "        } else {\n"
-                        + "            environment = new " + Util.ENVIRONMENT_CLASS.getName() + "($0, $0.closureHolder.getEnvironmentSize());\n"
+                        + "                environment = new " + Util.ENVIRONMENT_CLASS.getName() + "($0, $0.closureHolder.getEnvironmentSize());\n"
+                        + "           }\n"
                         + "        }\n"
                         + "    }\n"
                         + (

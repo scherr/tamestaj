@@ -15,16 +15,16 @@ abstract class ClosureHolder<T extends Closure<?>> {
             private T closure;
             private int environmentSize;
 
-            synchronized void set(T closure, int environmentSize) {
+            void set(T closure, int environmentSize) {
                 this.closure = closure;
                 this.environmentSize = environmentSize;
             }
 
-            synchronized T getClosure() {
+            T getClosure() {
                 return closure;
             }
 
-            synchronized int getEnvironmentSize() {
+            int getEnvironmentSize() {
                 return environmentSize;
             }
 

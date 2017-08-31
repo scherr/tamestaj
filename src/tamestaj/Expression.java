@@ -66,7 +66,7 @@ public abstract class Expression {
             void visit(MethodInvocation staged);
         }
 
-        boolean isomorphicHashCodeHasBeenCalculated;
+        volatile boolean isomorphicHashCodeHasBeenCalculated;
         int isomorphicHashCode;
 
         private final Expression[] arguments;
@@ -648,7 +648,7 @@ public abstract class Expression {
             }
         }
 
-        private V value;
+        private final V value;
 
         private ObjectValue(V value) {
             this.value = value;

@@ -599,12 +599,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() { return System.identityHashCode(super.value); }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((ObjectValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
             Expression cacheClone(IdentityHashMap<Expression, Expression> identityMap) {
                 return this;
@@ -738,14 +735,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() {
-                return Boolean.hashCode(super.value);
-            }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((BooleanValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
 
             public boolean isConstant() {
@@ -859,14 +851,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() {
-                return Integer.hashCode(super.value);
-            }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((IntegerValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
 
             public boolean isConstant() {
@@ -985,14 +972,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() {
-                return Long.hashCode(super.value);
-            }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((LongValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
 
             public boolean isConstant() {
@@ -1106,14 +1088,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() {
-                return Float.hashCode(super.value);
-            }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((FloatValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
 
             public boolean isConstant() {
@@ -1227,14 +1204,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() {
-                return Double.hashCode(super.value);
-            }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((DoubleValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
 
             public boolean isConstant() {
@@ -1348,14 +1320,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() {
-                return Byte.hashCode(super.value);
-            }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((ByteValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
 
             public boolean isConstant() {
@@ -1469,14 +1436,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() {
-                return Character.hashCode(super.value);
-            }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((CharacterValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
 
             public boolean isConstant() {
@@ -1590,14 +1552,9 @@ public abstract class Expression {
                 return this;
             }
 
-            int isomorphicHashCode() {
-                return Short.hashCode(super.value);
-            }
+            int isomorphicHashCode() { return this.hashCode(); }
             boolean isIsomorphicTo(IdentityHashMap<Object, Object> identityMap, Expression expression) {
-                if (!(expression instanceof Constant)) { return false; }
-                if (super.value != ((ShortValue) expression).value) { return false; }
-
-                return super.isIsomorphicTo(identityMap, (Value) expression);
+                return this.equals(expression);
             }
 
             public boolean isConstant() {

@@ -125,7 +125,7 @@ final class CachabilityAnalyzer {
                                 break outer;
                             }
 
-                            if (constantAnalyzerResult.isConstant(a.getUseIndex())) {
+                            if (!constantAnalyzerResult.isConstant(a.getUseIndex())) {
                                 nonConstantArguments.add(a);
                             }
                         }
@@ -138,7 +138,7 @@ final class CachabilityAnalyzer {
                             break outer;
                         }
 
-                        if (constantAnalyzerResult.isConstant(a.getUseIndex())) {
+                        if (!constantAnalyzerResult.isConstant(a.getUseIndex())) {
                             nonConstantArguments.add(a);
                         }
                     }
@@ -168,13 +168,14 @@ final class CachabilityAnalyzer {
             if (entry.getValue() == Dynamicity.STATIC) {
                 isFullyStatic = true;
 
-                // Check if the (flattened) arguments cannot yield different expression shapes
+                // Check if the (flattened) arguments can yield different "shapes", i.e. if there are argument pairs
+                // that in some executions could be the same value (in terms of object identity) but in others could be
+                // different.
                 //
-                //                   disqualified <=> for each argument A:
-                //                                        for each argument A':
-                //                                            virtualSource(A) != virtualSource(A')
-                //                                            &&
-                //                                            intersect(sources(A), sources(A')) != empty
+                //                   disqualified <=> there exists an argument pair (A, B) where
+                //                                      virtualSource(A) != virtualSource(B)
+                //                                         &&
+                //                                      intersection (sources(A), sources(B)) not empty
                 //
                 ImmutableSet<Use.Argument> nonConstantArguments = stagedToNonConstantArguments.get(entry.getKey());
                 outer:
